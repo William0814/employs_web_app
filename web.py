@@ -3,6 +3,7 @@ import functions
 
 employs = functions.get_employs()
 
+st.set_page_config(layout="wide")
 
 def add_employ():
     employ = st.session_state["new_employ"] + "\n"
@@ -10,10 +11,11 @@ def add_employ():
     functions.write_employs(employs)
 
 
-
-
 st.title('My Employs App')
 st.subheader('This is my app.')
+
+st.text_input(label="", placeholder='Add new Employ....',
+              on_change=add_employ, key="new_employ")
 
 
 for index, employ in enumerate(employs):
@@ -25,8 +27,6 @@ for index, employ in enumerate(employs):
         st.rerun()
 
 
-st.text_input(label="", placeholder='Add new Employ....',
-              on_change=add_employ, key="new_employ")
 
 
 st.session_state
